@@ -1,0 +1,17 @@
+last_updated: 2026-04-12
+
+entries:
+  - id: example-index-first-search-pattern
+    type: pattern
+    project: claude-brain
+    tags: [architecture, search, context-management, yaml, performance]
+    summary: "Single index file for O(1) discovery beats scanning N files for AI knowledge search"
+    file: entries/example-index-first-search-pattern.md
+
+  - id: example-stale-docs-poison-ai
+    type: insight
+    project: example-project
+    related_projects: [claude-brain]
+    tags: [documentation, ai-assisted-development, architecture]
+    summary: "Stale docs cause AI to generate code for the old architecture — triage docs before any rebuild"
+    file: entries/example-stale-docs-poison-ai.md

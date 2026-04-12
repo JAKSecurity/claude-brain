@@ -1,0 +1,18 @@
+# Personal data (don't commit actual brain entries or transcripts to public repo)
+# Remove these lines if using this as a private knowledge store
+# data/brain/entries/
+# data/brain/summaries/
+# data/transcripts/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
