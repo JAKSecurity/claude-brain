@@ -322,7 +322,7 @@ A second scheduled task (or a PostCompact hook) could run AI review over newly a
 
 ### Cross-Project Transcript Search
 
-Currently, the SessionStart hook only surfaces transcripts for the current project. A cross-project search capability would allow retrieving relevant sessions from other projects when the current task overlaps (e.g., searching agentic-security transcripts while working in rapid-cato).
+Currently, the SessionStart hook only surfaces transcripts for the current project. A cross-project search capability would allow retrieving relevant sessions from other projects when the current task overlaps (e.g., searching project-a transcripts while working in project-b).
 
 ### Transcript Summarization Layer
 
