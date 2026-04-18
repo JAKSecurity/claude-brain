@@ -1,0 +1,71 @@
+# claude-brain — Three-Layer Knowledge Architecture
+# Stacked layers: curated brain (top) -> verbatim transcripts -> hook injection (bottom).
+# Shows what each layer contains and how they relate vertically.
+
+...@~/.claude/skills/d2-diagram/assets/jak-dark
+
+direction: down
+
+layer1: "Layer 1 — Brain\n(Curated Knowledge)" {
+  class: panel
+
+  brain_index: "index.yaml\nSearchable index" {
+    class: data
+    icon: https://api.iconify.design/tabler/file-text.svg
+  }
+
+  brain_entries: "entries/*.md\nOne file per insight" {
+    class: data
+    icon: https://api.iconify.design/tabler/folder.svg
+  }
+
+  brain_summaries: "summaries/\nPer-project rollups" {
+    class: data
+    icon: https://api.iconify.design/tabler/list.svg
+  }
+
+  brain_index -> brain_entries: "O(1) lookup"
+  brain_index -> brain_summaries: "project rollup"
+}
+
+layer2: "Layer 2 — Transcript Archive\n(Verbatim Sessions)" {
+  class: panel
+
+  tx_store: "transcripts/project/\nArchived session markdown" {
+    class: data
+    icon: https://api.iconify.design/tabler/file-text.svg
+  }
+
+  tx_index: "index.json\nDedup tracking" {
+    class: data
+    icon: https://api.iconify.design/tabler/database.svg
+  }
+
+  archive_task: "archive_transcripts.py\nDaily scheduled task" {
+    class: compute
+    icon: https://api.iconify.design/tabler/clock.svg
+  }
+
+  archive_task -> tx_store: "write markdown"
+  archive_task -> tx_index: "update hash index"
+}
+
+layer3: "Layer 3 — SessionStart Hook\n(Context Injection)" {
+  class: panel
+
+  hook: "SessionStart Hook\nauto-fires on open" {
+    class: service
+    icon: https://api.iconify.design/tabler/bolt.svg
+  }
+
+  claude_session: "Claude Session\nnew conversation" {
+    class: agent
+    icon: https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/anthropic.svg
+  }
+
+  hook -> claude_session: "inject recent transcript context"
+}
+
+layer1 -> layer2: "/learn graduates sessions to brain entries"
+layer2 -> layer3: "recent transcripts feed the hook"
+layer3 -> layer1: "/recall queries brain index"

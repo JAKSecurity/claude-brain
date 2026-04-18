@@ -14,6 +14,20 @@ AI conversations vanish between sessions. Knowledge learned in one project is in
 
 3. **SessionStart Hook** — Bridges sessions by auto-injecting recent transcript context. No behavior change required from the user.
 
+## System Overview
+
+### Three-Layer Architecture
+
+Each layer serves a different grain of knowledge — curated entries at the top, verbatim sessions in the middle, and automatic context injection at the bottom.
+
+![Three-layer architecture](docs/diagrams/layers.svg)
+
+### Knowledge Capture & Retrieval Lifecycle
+
+Sessions are captured automatically, archived daily, and optionally graduated into brain entries via `/learn`. At every session start, the hook injects relevant context. `/recall` surfaces entries on demand.
+
+![Capture and retrieval lifecycle](docs/diagrams/capture-retrieval.svg)
+
 ## Architecture
 
 ```

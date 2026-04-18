@@ -1,0 +1,63 @@
+# claude-brain — Knowledge Capture & Retrieval Lifecycle
+# Left-to-right: session happens -> transcript archived -> insight graduated to brain
+# -> future session opens -> hook injects context -> /recall surfaces entries on demand.
+
+...@~/.claude/skills/d2-diagram/assets/jak-dark
+
+direction: right
+
+jeff: "Jeff" {
+  class: user
+  icon: https://api.iconify.design/tabler/user.svg
+}
+
+session: "Claude Code\nSession" {
+  class: agent
+  icon: https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/anthropic.svg
+}
+
+archive_task: "Transcript\nArchiver\ndaily 5:45 AM" {
+  class: compute
+  icon: https://api.iconify.design/tabler/clock.svg
+}
+
+stores: "Knowledge Stores" {
+  class: panel
+
+  tx_archive: "Transcript Archive\ndata/transcripts/" {
+    class: data
+    icon: https://api.iconify.design/tabler/folder.svg
+  }
+
+  brain: "Brain\ndata/brain/" {
+    class: data
+    icon: https://api.iconify.design/tabler/brain.svg
+  }
+
+  tx_archive -> brain: "/learn graduates\ninsight"
+}
+
+hook: "SessionStart\nHook" {
+  class: service
+  icon: https://api.iconify.design/tabler/bolt.svg
+}
+
+recall: "/recall" {
+  class: service
+  icon: https://api.iconify.design/tabler/search.svg
+}
+
+next_session: "Next Session\nstarts with context" {
+  class: agent
+  icon: https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/anthropic.svg
+}
+
+jeff -> session: "works in project"
+session -> archive_task: "raw JSONL\ntranscripts"
+archive_task -> stores.tx_archive: "archive as\nmarkdown"
+stores.tx_archive -> hook: "recent sessions"
+stores.brain -> hook: "relevant entries"
+stores.brain -> recall: "index search"
+hook -> next_session: "inject context\nat open"
+recall -> next_session: "surface entries\non demand"
+next_session -> jeff: "contextual\nresponse"
