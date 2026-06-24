@@ -2,6 +2,8 @@
 
 A cross-project persistent knowledge system for Claude Code. Solves the problem of knowledge loss between sessions and knowledge isolation between projects.
 
+> One of four substrates extracted from a personal Claude Code automation system. The [case study](https://jaksecurity.com/projects/ai-assistant/) shows how the pieces compose.
+
 ## The Problem
 
 AI conversations vanish between sessions. Knowledge learned in one project is invisible when working in another. Manual note-taking requires recognizing what matters at the time — which fails for insights that only become important in hindsight.
